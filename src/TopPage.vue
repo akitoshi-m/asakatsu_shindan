@@ -35,21 +35,7 @@
         <div class="resut-area">
           <div class="result-is">あなたは...</div>
           <div class="result-text">
-            <div v-if="asakatsuPoint >= 9">
-              <p>「朝活マスター」です！</p>
-            </div>
-            <div v-else-if="asakatsuPoint >= 7">
-              <p>「朝活プロ」です！</p>
-            </div>
-            <div v-else-if="asakatsuPoint >= 5">
-              <p>「朝活アマ」です！</p>
-            </div>
-            <div v-else-if="asakatsuPoint >= 3">
-              <p>「朝活初心者」です！</p>
-            </div>
-            <div v-else-if="asakatsuPoint >= 0">
-              <p>「朝活見習い」です！</p>
-            </div>
+            「{{ this.resultStatus }}」です！
           </div>
           <div class="one-point">
             <p class="one-point-title">〜ワンポイントメッセージ〜</p>
@@ -57,7 +43,7 @@
               {{ this.shuffleOnePoints[0].text }}
             </p>
           </div>
-          <button class="button is-link function-button">結果をつぶやいてみよう！</button>
+          <button @click="twitterShare" class="button is-link function-button">結果をつぶやいてみよう！</button>
           <button @click="retryCheck" class="button is-primary function-button">もう一度診断する</button>
         </div>
         <div class="result-image">
@@ -75,6 +61,7 @@ export default {
       currentPage: "top-page",
       asakatsuPoint: 0,
       questionCount: 0,
+      resultStatus: "",
       questionLists: [
         { name: "朝起きたらプロテインを飲む", trainee: true },
         { name: "筋トレの習慣がある", trainee: true},
@@ -134,12 +121,24 @@ export default {
     retryCheck() {
       this.asakatsuPoint = 0;
       this.questionCount = 0;
+      this.resultStatus = "";
       this.currentPage = "top-page";
     },
     answerYes() {
       this.asakatsuPoint += 1;
       this.questionCount += 1;
-      if (this.questionCount == 10) {
+      if (this.questionCount === 10) {
+        if (this.asakatsuPoint >= 9) {
+          this.resultStatus = "朝活マスター";
+        } else if (this.asakatsuPoint >= 7) {
+          this.resultStatus = "朝活プロ";
+        } else if (this.asakatsuPoint >= 5) {
+          this.resultStatus = "朝活アマ";
+        } else if (this.asakatsuPoint >= 3) {
+          this.resultStatus = "朝活初心者";
+        } else if (this.asakatsuPoint >= 0) {
+          this.resultStatus = "朝活見習い";
+        }
         this.currentPage = "result-page"
       }
     },
@@ -148,6 +147,12 @@ export default {
       if (this.questionCount == 10) {
         this.currentPage = "result-page"
       }
+    },
+    twitterShare(){
+      //シェアする画面を設定
+      var shareURL = 'https://twitter.com/intent/tweet?text=' + "朝活診断の結果は「" + this.resultStatus + "」でした。今日も最高の1日にしよう！" + '&hashtags=' + "asakatsu_shindan" + '&hashtags=' + "朝活";
+      //シェア用の画面へ移行
+      location.href = shareURL
     }
   },
   created () {
