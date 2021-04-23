@@ -16,16 +16,16 @@
     <div v-if="currentPage === 'question-page'">
       <div class="question-page">
         <div class="question-area">
-          <div v-for="(question, index) in questionLists" :key="question.id" class="question-text">
-              <div v-if="questionCount === index">
-                <p>Q{{ index + 1 }}. {{ question.name }}</p>
-              </div>
+          <div v-for="(question, index) in shuffleQuestionLists" :key="question.id" class="question-text">
+            <div v-if="questionCount === index">
+              <p>Q{{ index + 1 }}. {{ question.name }}</p>
+            </div>
           </div>
           <button @click="answerYes" class="button is-primary question-button">YES</button>
           <button @click="answerNo" class="button is-danger question-button">NO</button>
         </div>
         <div class="question-image">
-          <img src="@/assets/asakatsu_shindan_top.svg" alt="質問ページの画像" width="400px" height="400px" />
+          <img v-bind:src="imgSrc" alt="質問ページの画像" width="500px" height="500px" />
         </div>
       </div>
     </div>
@@ -60,29 +60,49 @@ export default {
       questionCount: 0,
       questionLists: [
         { name: "朝起きたらプロテインを飲む", trainee: true },
-        { name: "筋トレをしている", trainee: true},
-        { name: "読書をしている", trainee: false},
-        { name: "資格などの勉強をしている", trainee: false},
+        { name: "筋トレの習慣がある", trainee: true},
+        { name: "読書の習慣がある", trainee: false},
+        { name: "資格などの勉強に取り組んでいる", trainee: false},
         { name: "誰よりも早く会社に行っている", trainee: false},
-        { name: "白湯を飲む", trainee: false},
+        { name: "起床後は白湯を飲む", trainee: false},
         { name: "6時台には起きている", trainee: false},
         { name: "平日休日にかかわらず起きる時間はほぼ同じである", trainee: false},
-        { name: "朝早く起きて活動開始するとなぜか全能感がある", trainee: false},
+        { name: "朝早く起きて活動開始すると1日の調子が良い", trainee: false},
         { name: "朝活を1週間以上継続している", trainee: false},
-        { name: "朝を制するものは1日を制すると思っている", trainee: false},
-        { name: "朝にその日の仕事の予定をたてている", trainee: false}
-      ]
+        { name: "朝に仕事や行動の予定をたてている", trainee: false},
+        { name: "朝活をする仲間がいる", trainee: false}
+      ],
+      imageNumbers: [
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"
+      ],
+      shuffleImageNumbers: [],
+      shuffleQuestionLists: []
     }
   },
+  computed: {
+    imgSrc () {
+      return require("./assets/question_" + this.shuffleImageNumbers[this.questionCount] + ".svg")
+    }
+  },
+  mounted: function() {
+    this.shuffleImageNumbers = this.shuffle(this.imageNumbers);
+    this.shuffleQuestionLists = this.shuffle(this.questionLists);
+  },
   methods: {
+    shuffle: function(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        let r = Math.floor(Math.random() * (i + 1))
+        let tmp = array[i]
+        array[i] = array[r]
+        array[r] = tmp
+      }
+      return array
+    },
     startQuestion() {
       this.currentPage = "question-page";
     },
     showResult() {
       this.currentPage = "result-page";
-    },
-    shuffle: function() {
-
     },
     answerYes() {
       this.asakatsuPoint += 1;
@@ -97,6 +117,8 @@ export default {
         this.currentPage = "result-page"
       }
     }
+  },
+  created () {
   }
 }
 </script>
@@ -138,7 +160,7 @@ export default {
 }
 
 .question-area {
-  width: 50%;
+  width: 40%;
 }
 
 .question-button {
