@@ -129,15 +129,15 @@ export default {
       this.questionCount += 1;
       if (this.questionCount === 10) {
         if (this.asakatsuPoint >= 9) {
-          this.resultStatus = "朝活マスター";
+          this.resultStatus = "朝活マスター"
         } else if (this.asakatsuPoint >= 7) {
-          this.resultStatus = "朝活プロ";
+          this.resultStatus = "朝活プロ"
         } else if (this.asakatsuPoint >= 5) {
-          this.resultStatus = "朝活アマ";
+          this.resultStatus = "朝活アマ"
         } else if (this.asakatsuPoint >= 3) {
-          this.resultStatus = "朝活初心者";
+          this.resultStatus = "朝活初心者"
         } else if (this.asakatsuPoint >= 0) {
-          this.resultStatus = "朝活見習い";
+          this.resultStatus = "朝活見習い"
         }
         this.currentPage = "result-page"
       }
@@ -145,6 +145,17 @@ export default {
     answerNo() {
       this.questionCount += 1;
       if (this.questionCount == 10) {
+        if (this.asakatsuPoint >= 9) {
+          this.resultStatus = "朝活マスター"
+        } else if (this.asakatsuPoint >= 7) {
+          this.resultStatus = "朝活プロ"
+        } else if (this.asakatsuPoint >= 5) {
+          this.resultStatus = "朝活アマ"
+        } else if (this.asakatsuPoint >= 3) {
+          this.resultStatus = "朝活初心者"
+        } else if (this.asakatsuPoint >= 0) {
+          this.resultStatus = "朝活見習い"
+        }
         this.currentPage = "result-page"
       }
     },
