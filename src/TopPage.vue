@@ -21,8 +21,8 @@
               <p>Q{{ index + 1 }}. {{ question.name }}</p>
             </div>
           </div>
-          <button @click="answerYes" class="button is-primary question-button">YES</button>
-          <button @click="answerNo" class="button is-danger question-button">NO</button>
+          <button @click="answerYes" class="button is-primary function-button">YES</button>
+          <button @click="answerNo" class="button is-danger function-button">NO</button>
         </div>
         <div class="question-image">
           <img v-bind:src="imgSrc" alt="質問ページの画像" width="500px" height="500px" />
@@ -31,21 +31,38 @@
     </div>
     <!-- 結果表示ページ -->
     <div v-if="currentPage === 'result-page'">
-      <div>結果表示ページ</div>
-      <div v-if="asakatsuPoint >= 9">
-        <p>朝活マスター</p>
-      </div>
-      <div v-else-if="asakatsuPoint >= 7">
-        <p>朝活プロ</p>
-      </div>
-      <div v-else-if="asakatsuPoint >= 5">
-        <p>朝活アマ</p>
-      </div>
-      <div v-else-if="asakatsuPoint >= 3">
-        <p>朝活入門者</p>
-      </div>
-      <div v-else-if="asakatsuPoint >= 0">
-        <p>朝活見習い</p>
+      <div class="result-page">
+        <div class="resut-area">
+          <div class="result-is">あなたは...</div>
+          <div class="result-text">
+            <div v-if="asakatsuPoint >= 9">
+              <p>「朝活マスター」です！</p>
+            </div>
+            <div v-else-if="asakatsuPoint >= 7">
+              <p>「朝活プロ」です！</p>
+            </div>
+            <div v-else-if="asakatsuPoint >= 5">
+              <p>「朝活アマ」です！</p>
+            </div>
+            <div v-else-if="asakatsuPoint >= 3">
+              <p>「朝活初心者」です！</p>
+            </div>
+            <div v-else-if="asakatsuPoint >= 0">
+              <p>「朝活見習い」です！</p>
+            </div>
+          </div>
+          <div class="one-point">
+            <p class="one-point-title">〜ワンポイントメッセージ〜</p>
+            <p class="one-point-message">
+              {{ this.shuffleOnePoints[0].text }}
+            </p>
+          </div>
+          <button class="button is-link function-button">結果をつぶやいてみよう！</button>
+          <button @click="retryCheck" class="button is-primary function-button">もう一度診断する</button>
+        </div>
+        <div class="result-image">
+        <img src="./assets/result.svg" alt="結果表示ページの画像" width="400px" height="400px" />
+        </div>
       </div>
     </div>
   </div>
@@ -75,8 +92,17 @@ export default {
       imageNumbers: [
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"
       ],
+      onePoints: [
+        { text: "仲間がいると朝活がより楽しくなります"},
+        { text: "起床時刻を決めると起きやすくなります" },
+        { text: "twitterで#朝活を検索して仲間を見つけてみよう" },
+        { text: "朝にやりたいことを持ってくると継続しやすいです" },
+        { text: "朝の散歩は健康にもメンタルにも良い効果があります" },
+        { text: "朝1時間を1ヶ月続けるだけでも30時間自由な時間が生まれます" }
+      ],
       shuffleImageNumbers: [],
-      shuffleQuestionLists: []
+      shuffleQuestionLists: [],
+      shuffleOnePoints: []
     }
   },
   computed: {
@@ -87,6 +113,7 @@ export default {
   mounted: function() {
     this.shuffleImageNumbers = this.shuffle(this.imageNumbers);
     this.shuffleQuestionLists = this.shuffle(this.questionLists);
+    this.shuffleOnePoints = this.shuffle(this.onePoints);
   },
   methods: {
     shuffle: function(array) {
@@ -103,6 +130,11 @@ export default {
     },
     showResult() {
       this.currentPage = "result-page";
+    },
+    retryCheck() {
+      this.asakatsuPoint = 0;
+      this.questionCount = 0;
+      this.currentPage = "top-page";
     },
     answerYes() {
       this.asakatsuPoint += 1;
@@ -133,6 +165,7 @@ export default {
   margin: auto
 }
 
+/* トップページ */
 .top-page {
   background-color: #ffffff;
   margin: 60px;
@@ -152,6 +185,7 @@ export default {
   font-size: 20px;
 }
 
+/* 質問ページ */
 .question-page {
   min-height: 100vh;
   display: flex;
@@ -163,7 +197,7 @@ export default {
   width: 40%;
 }
 
-.question-button {
+.function-button {
   margin: 50px 20px;
 }
 
@@ -174,4 +208,43 @@ export default {
 .question-image {
   width: 50%;
 }
+
+/* 結果表示ページ */
+.result-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-area {
+  width: 40%;
+}
+
+.result-is {
+  text-align: left;
+  font-size: 22px;
+}
+
+.result-text {
+  font-size: 50px;
+}
+
+.one-point {
+  margin-top: 50px;
+}
+
+.one-point-title {
+  font-size: 20px;
+}
+
+.one-point-message {
+  font-size: 22px;
+}
+
+.result-image {
+  width: 40%;
+  margin-left: 70px;
+}
+
 </style>
