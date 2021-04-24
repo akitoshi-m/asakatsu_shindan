@@ -161,7 +161,7 @@ export default {
     },
     twitterShare(){
       //シェアする画面を設定
-      var shareURL = 'https://twitter.com/intent/tweet?text=' + "朝活診断の結果は「" + this.resultStatus + "」でした。今日も最高の1日にしよう！" + '&hashtags=' + "asakatsu_shindan" + '&hashtags=' + "朝活";
+      var shareURL = 'https://twitter.com/intent/tweet?text=' + "朝活診断の結果は「" + this.resultStatus + "」でした。今日も最高の1日にしよう！" + '&url=https://asakatsu-shindan.netlify.app/' + '&hashtags=' + "asakatsu_shindan" + '&hashtags=' + "朝活";
       //シェア用の画面へ移行
       location.href = shareURL
     }
