@@ -63,23 +63,25 @@ export default {
       questionCount: 0,
       resultStatus: "",
       questionLists: [
-        { name: "朝起きたらまず「今日も最高の1日にする」と宣言している", trainee: true },
-        { name: "朝日と共に起床している", trainee: true},
+        { name: "起きた時に自分にプラスの言葉をかけるようにしている", trainee: true },
+        { name: "目覚まし時計がなくても起きられる", trainee: true},
         { name: "朝ご飯をきちんと食べている", trainee: false},
-        { name: "朝起きたらtwitterでつぶやきをしている", trainee: false},
+        { name: "寝る時はカーテンを開け、朝に光が入ってくる様にしている", trainee: false},
         { name: "朝に資格や読書など勉強に励んでいる", trainee: false},
         { name: "起床後は白湯を飲んでいる", trainee: false},
         { name: "6時台には起きている", trainee: false},
         { name: "平日休日にかかわらず起きる時間はほぼ同じである", trainee: false},
         { name: "朝早く起きて活動開始すると1日の調子が良い", trainee: false},
-        { name: "朝活を1週間以上継続している", trainee: false},
+        { name: "朝活を1週間以上継続したことがある", trainee: false},
         { name: "朝に仕事や行動の予定をたてている", trainee: false},
-        { name: "朝活をする仲間がいる", trainee: false}
+        { name: "朝活をする仲間がいる", trainee: false},
+        { name: "twitterで#朝活をつけてつぶやいたことがある", trainee: false}
       ],
       imageNumbers: [
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"
       ],
       onePoints: [
+        { text: "朝早く起きるために、夜の作業に区切りをつけて早めに寝てみましょう"},
         { text: "仲間がいると朝活がより楽しくなります"},
         { text: "起床時刻を決めると起きやすくなります" },
         { text: "twitterで#朝活を検索して仲間を見つけてみよう" },
