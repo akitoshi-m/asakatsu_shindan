@@ -63,23 +63,25 @@ export default {
       questionCount: 0,
       resultStatus: "",
       questionLists: [
-        { name: "朝起きたらまず「今日も最高の1日にする」と宣言している", trainee: true },
-        { name: "朝日と共に起床している", trainee: true},
+        { name: "起きた時に自分にプラスの言葉をかけるようにしている", trainee: true },
+        { name: "目覚まし時計がなくても起きられる", trainee: true},
         { name: "朝ご飯をきちんと食べている", trainee: false},
-        { name: "朝起きたらtwitterでつぶやきをしている", trainee: false},
+        { name: "寝る時はカーテンを開け、朝に光が入ってくる様にしている", trainee: false},
         { name: "朝に資格や読書など勉強に励んでいる", trainee: false},
         { name: "起床後は白湯を飲んでいる", trainee: false},
         { name: "6時台には起きている", trainee: false},
         { name: "平日休日にかかわらず起きる時間はほぼ同じである", trainee: false},
         { name: "朝早く起きて活動開始すると1日の調子が良い", trainee: false},
-        { name: "朝活を1週間以上継続している", trainee: false},
+        { name: "朝活を1週間以上継続したことがある", trainee: false},
         { name: "朝に仕事や行動の予定をたてている", trainee: false},
-        { name: "朝活をする仲間がいる", trainee: false}
+        { name: "朝活をする仲間がいる", trainee: false},
+        { name: "twitterで#朝活をつけてつぶやいたことがある", trainee: false}
       ],
       imageNumbers: [
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"
       ],
       onePoints: [
+        { text: "朝早く起きるために、夜の作業に区切りをつけて早めに寝てみましょう"},
         { text: "仲間がいると朝活がより楽しくなります"},
         { text: "起床時刻を決めると起きやすくなります" },
         { text: "twitterで#朝活を検索して仲間を見つけてみよう" },
@@ -129,15 +131,15 @@ export default {
       this.questionCount += 1;
       if (this.questionCount === 10) {
         if (this.asakatsuPoint >= 9) {
-          this.resultStatus = "朝活マスター";
+          this.resultStatus = "朝活マスター"
         } else if (this.asakatsuPoint >= 7) {
-          this.resultStatus = "朝活プロ";
+          this.resultStatus = "朝活プロ"
         } else if (this.asakatsuPoint >= 5) {
-          this.resultStatus = "朝活アマ";
+          this.resultStatus = "朝活アマ"
         } else if (this.asakatsuPoint >= 3) {
-          this.resultStatus = "朝活初心者";
+          this.resultStatus = "朝活初心者"
         } else if (this.asakatsuPoint >= 0) {
-          this.resultStatus = "朝活見習い";
+          this.resultStatus = "朝活見習い"
         }
         this.currentPage = "result-page"
       }
@@ -145,12 +147,23 @@ export default {
     answerNo() {
       this.questionCount += 1;
       if (this.questionCount == 10) {
+        if (this.asakatsuPoint >= 9) {
+          this.resultStatus = "朝活マスター"
+        } else if (this.asakatsuPoint >= 7) {
+          this.resultStatus = "朝活プロ"
+        } else if (this.asakatsuPoint >= 5) {
+          this.resultStatus = "朝活アマ"
+        } else if (this.asakatsuPoint >= 3) {
+          this.resultStatus = "朝活初心者"
+        } else if (this.asakatsuPoint >= 0) {
+          this.resultStatus = "朝活見習い"
+        }
         this.currentPage = "result-page"
       }
     },
     twitterShare(){
       //シェアする画面を設定
-      var shareURL = 'https://twitter.com/intent/tweet?text=' + "朝活診断の結果は「" + this.resultStatus + "」でした。今日も最高の1日にしよう！" + '&hashtags=' + "asakatsu_shindan" + '&hashtags=' + "朝活";
+      var shareURL = 'https://twitter.com/intent/tweet?text=' + "朝活診断の結果は「" + this.resultStatus + "」でした。今日も最高の1日にしよう！" + '&url=https://asakatsu-shindan.netlify.app/' + '&hashtags=' + "asakatsu_shindan" + '&hashtags=' + "朝活";
       //シェア用の画面へ移行
       location.href = shareURL
     }
