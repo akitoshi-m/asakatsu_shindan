@@ -1,4 +1,4 @@
-# asakatsu_shindan
+# 朝活診断(asakatsu_shindan)
 ## サービスURL
 https://app.netlify.com/sites/asakatsu-shindan/overview
 
