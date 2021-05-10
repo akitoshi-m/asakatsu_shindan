@@ -2,6 +2,10 @@
 ## サービスURL
 https://app.netlify.com/sites/asakatsu-shindan/overview
 
+## トップイメージ
+![image](https://user-images.githubusercontent.com/52368204/117595874-e884a400-b17c-11eb-9862-be22e8ac6845.png)
+
+
 ## 目的
 - 朝活をしたいと思っている人や既にしている人が、自分自身の朝活力を知るためのサービス
 - 朝から活動するためのヒントを得ることができる
