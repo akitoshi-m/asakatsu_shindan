@@ -1,4 +1,22 @@
-# asakatsu_shindan
+# 朝活診断(asakatsu_shindan)
+## サービスURL
+https://app.netlify.com/sites/asakatsu-shindan/overview
+
+## トップイメージ
+![image](https://user-images.githubusercontent.com/52368204/117595874-e884a400-b17c-11eb-9862-be22e8ac6845.png)
+
+
+## 目的
+- 朝活をしたいと思っている人や既にしている人が、自分自身の朝活力を知るためのサービス
+- 朝から活動するためのヒントを得ることができる
+
+## 機能
+- 朝活に関する質問が10個ランダムで表示され、YES/NOで答えることで
+
+## 使用技術
+- Vue.js
+- Bulma(CSSフレームワーク)
+- Netrify(デプロイ用)
 
 ## Project setup
 ```

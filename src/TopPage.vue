@@ -63,19 +63,19 @@ export default {
       questionCount: 0,
       resultStatus: "",
       questionLists: [
-        { name: "起きた時に自分にプラスの言葉をかけるようにしている", trainee: true },
-        { name: "目覚まし時計がなくても起きられる", trainee: true},
-        { name: "朝ご飯をきちんと食べている", trainee: false},
-        { name: "寝る時はカーテンを開け、朝に光が入ってくる様にしている", trainee: false},
-        { name: "朝に資格や読書など勉強に励んでいる", trainee: false},
-        { name: "起床後は白湯を飲んでいる", trainee: false},
+        { name: "朝ごはんをとっている", trainee: false },
+        { name: "朝はタンパク質多めのご飯をとっている", trainee: true },
+        { name: "筋トレの習慣がある", trainee: true },
+        { name: "目覚めはいい方だ", trainee: false },
+        { name: "睡眠時間にあまりばらつきがない", trainee: false },
+        { name: "睡眠時間を削ることはしない", trainee: false },
+        { name: "朝は白湯を飲む", trainee: false},
         { name: "6時台には起きている", trainee: false},
         { name: "平日休日にかかわらず起きる時間はほぼ同じである", trainee: false},
-        { name: "朝早く起きて活動開始すると1日の調子が良い", trainee: false},
-        { name: "朝活を1週間以上継続したことがある", trainee: false},
-        { name: "朝に仕事や行動の予定をたてている", trainee: false},
-        { name: "朝活をする仲間がいる", trainee: false},
-        { name: "twitterで#朝活をつけてつぶやいたことがある", trainee: false}
+        { name: "朝に仕事や勉強をすると効率がいいことを体感している", trainee: false},
+        { name: "夜遅くまでやるより早く寝て朝やる方が時間効率が良い？", trainee: false},
+        { name: "起きたら実施するルーティンのようなものがある", trainee: false},
+        { name: "夜より朝の方が集中できる", trainee: false}
       ],
       imageNumbers: [
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"
